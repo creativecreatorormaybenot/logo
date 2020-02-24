@@ -14,7 +14,7 @@ jk
 
 ## Showcase
 
-I also created a little showcase of this method, which you can [watch here](https://twitter.com/creativemaybeno/status/1231998986086645761?s=20).
+I also created a little showcase of this method, which you can [watch here](https://twitter.com/creativemaybeno/status/1231998986086645761?s=20) or directly [on YouTube](https://youtu.be/AzXazch8AaI).
 
 ### Sources
 
