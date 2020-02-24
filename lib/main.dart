@@ -1,111 +1,139 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+import 'dart:typed_data';
 
-void main() => runApp(MyApp());
+void draw(ui.Canvas canvas, ui.Rect rect) {
+  canvas.scale(rect.height / 202, rect.height / 202);
+  canvas.translate((200 - 166) / 2, 0);
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+  final mediumPaint = ui.Paint()..color = const ui.Color(0xff42a5f5),
+      lightPaint = ui.Paint()..color = mediumPaint.color.withOpacity(.8),
+      darkPaint = ui.Paint()..color = const ui.Color(0xff0d47a1);
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  canvas.drawPath(
+      ui.Path()
+        ..moveTo(37.7, 128.9)
+        ..lineTo(9.8, 101)
+        ..lineTo(100.4, 10.4)
+        ..lineTo(156.2, 10.4),
+      lightPaint);
+  canvas.drawPath(
+      ui.Path()
+        ..moveTo(156.2, 94)
+        ..lineTo(100.4, 94)
+        ..lineTo(79.5, 114.9)
+        ..lineTo(107.4, 142.8),
+      lightPaint);
+  canvas.drawPath(
+      ui.Path()
+        ..moveTo(79.5, 170.7)
+        ..lineTo(100.4, 191.6)
+        ..lineTo(156.2, 191.6)
+        ..lineTo(107.4, 142.8),
+      darkPaint);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  canvas.save();
+  canvas.transform(Float64List.fromList(const <double>[
+    // comment to preserve formatting
+    .7071, -.7071, 0, 0,
+    .7071, .7071, 0, 0,
+    0, 0, 1, 0,
+    -77.697, 98.057, 0, 1,
+  ]));
+  canvas.drawRect(const ui.Rect.fromLTWH(59.8, 123.1, 39.4, 39.4), mediumPaint);
+  canvas.restore();
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+  canvas.drawPath(
+      ui.Path()
+        ..moveTo(79.5, 170.7)
+        ..lineTo(120.9, 156.4)
+        ..lineTo(107.4, 142.8),
+      ui.Paint()
+        ..shader = ui.Gradient.linear(
+          const ui.Offset(125.1715, 152.2773),
+          const ui.Offset(80.8297, 158.5341),
+          const <ui.Color>[
+            ui.Color(0xbfffffff),
+            ui.Color(0xbffcfcfc),
+            ui.Color(0xbff4f4f4),
+            ui.Color(0xbfe5e5e5),
+            ui.Color(0xbfd1d1d1),
+            ui.Color(0xbfb6b6b6),
+            ui.Color(0xbf959595),
+            ui.Color(0xbf6e6e6e),
+            ui.Color(0xbf616161),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
+          <double>[
+            0.2690,
+            0.4093,
+            0.4972,
+            0.5708,
+            0.6364,
+            0.6968,
+            0.7533,
+            0.8058,
+            0.8219,
+          ],
+        )
+        ..blendMode = ui.BlendMode.multiply);
+  canvas.drawPath(
+      ui.Path()
+        ..moveTo(107.4, 142.8)
+        ..lineTo(79.5, 170.7)
+        ..lineTo(86.1, 177.3)
+        ..lineTo(114.0, 149.4),
+      ui.Paint()
+        ..shader = ui.Gradient.linear(
+          const ui.Offset(62.3643 + 37.9092, 40.135 + 123.4389),
+          const ui.Offset(54.0376 + 37.9092, 31.8083 + 123.4389),
+          const <ui.Color>[
+            ui.Color(0x80ffffff),
+            ui.Color(0x80fcfcfc),
+            ui.Color(0x80f4f4f4),
+            ui.Color(0x80e5e5e5),
+            ui.Color(0x80d1d1d1),
+            ui.Color(0x80b6b6b6),
+            ui.Color(0x80959595),
+            ui.Color(0x806e6e6e),
+            ui.Color(0x80616161),
+          ],
+          <double>[
+            0.4588,
+            0.5509,
+            0.6087,
+            0.6570,
+            0.7001,
+            0.7397,
+            0.7768,
+            0.8113,
+            0.8219,
+          ],
+        )
+        ..blendMode = ui.BlendMode.multiply);
+}
+
+void main() {
+  ui.window.onBeginFrame = paint;
+  ui.window.scheduleFrame();
+}
+
+void paint(Duration t) {
+  final bounds = ui.Offset.zero &
+          (ui.window.physicalSize / ui.window.devicePixelRatio),
+      recorder = ui.PictureRecorder(),
+      canvas = ui.Canvas(recorder, bounds);
+
+  draw(canvas, bounds);
+
+  final picture = recorder.endRecording(),
+      builder = ui.SceneBuilder()
+        ..pushTransform(Float64List(16)
+          ..[0] = ui.window.devicePixelRatio
+          ..[5] = ui.window.devicePixelRatio
+          ..[10] = 1
+          ..[15] = 1)
+        ..addPicture(ui.Offset.zero, picture)
+        ..pop();
+
+  ui.window.render(builder.build());
+  ui.window.scheduleFrame();
 }
