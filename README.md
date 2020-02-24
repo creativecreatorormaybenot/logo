@@ -7,3 +7,15 @@ Everything necessary (no dependencies, no assets) can be found in [`lib/main.dar
 ## What is this
 
 This is a demonstration of the **raw layer** in Flutter.
+
+## Disclaimer
+
+jk
+
+## Showcase
+
+I also created a little showcase of this method, which you can [watch here]().
+
+### Sources
+
+The [`FlutterLogo` class](https://api.flutter.dev/flutter/material/FlutterLogo-class.html) in the framework and the [raw layer examples](https://github.com/flutter/flutter/tree/master/examples/layers/raw).
